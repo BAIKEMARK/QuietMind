@@ -1,4 +1,4 @@
-<img src="img\logo.png" title="logo" style="zoom:50%;" alt="alt"/>
+<img src="img\logo.png" title="logo" style="zoom:20%;" alt="alt"/>
 
 ## QuiteMind：你的智能消息托管助手
 
