@@ -54,7 +54,8 @@
      - [Dify 社区版部署教程](https://docs.dify.ai/zh-hans/getting-started/install-self-hosted/readme)
    - 安装完成后，登录本地控制台，创建新的 Chatflow 应用。
 
-> [!TIP] 本项目示例已在 Dify v1.4.0 测试通过，建议使用对应版本以保证兼容性。
+> [!TIP] 
+> 本项目示例已在 Dify v1.4.0 测试通过，建议使用对应版本以保证兼容性。
 
 ###  获取项目代码
 
