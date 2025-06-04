@@ -1,0 +1,2451 @@
+app:
+  description: 智能消息托管助手
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: QuiteMind
+  use_icon_as_answer_icon: true
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/json_process:0.0.2@7afb534cc85b28a8e9c7f9410d1cfc31fb7bd3950023355a37059dbe809ac776
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.0.25@325423749d5e71f8b4681af1b2ed46d7686cb1947e443a86ba5d14ac45ff85a4
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 908a8237-eb5e-44c3-9cc2-20b1093e0c03
+    name: unreplystr
+    selector:
+    - conversation
+    - unreplystr
+    value: ''
+    value_type: string
+  - description: ''
+    id: 7c6608cc-6e7d-440d-bf87-e448b70948fd
+    name: reply
+    selector:
+    - conversation
+    - reply
+    value: ''
+    value_type: string
+  - description: ''
+    id: fa8d831f-2e46-41ba-8671-7b8043d18830
+    name: history
+    selector:
+    - conversation
+    - history
+    value: []
+    value_type: array[object]
+  - description: ''
+    id: b96c0075-52f6-4938-93d0-a6d5e27f876b
+    name: unreply
+    selector:
+    - conversation
+    - unreply
+    value: []
+    value_type: array[string]
+  environment_variables:
+  - description: ''
+    id: c4d0dc77-1dd1-42df-a4f1-a689a7ab5256
+    name: MAX_HISTORY_LEN
+    selector:
+    - env
+    - MAX_HISTORY_LEN
+    value: 50
+    value_type: number
+  - description: ''
+    id: 778c65ae-ac36-4401-87cf-82722081d880
+    name: ZAPIER_MCP_URL
+    selector:
+    - env
+    - zapier_url
+    value: ''
+    value_type: secret
+  - description: ''
+    id: b204ece3-f47b-4a60-9ca0-4dd4229f2cad
+    name: USER_EMAIL
+    selector:
+    - env
+    - Email_address
+    value: ''
+    value_type: secret
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1747497224267-2-1747497553101-target
+      selected: false
+      source: '1747497224267'
+      sourceHandle: '2'
+      target: '1747497553101'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1747497224267-1747497363644-1747497556365-target
+      selected: false
+      source: '1747497224267'
+      sourceHandle: '1747497363644'
+      target: '1747497556365'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1747497224267-1-1747528331045-target
+      selected: false
+      source: '1747497224267'
+      sourceHandle: '1'
+      target: '1747528331045'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: agent
+      id: 1747497553101-source-1747532930377-target
+      selected: false
+      source: '1747497553101'
+      sourceHandle: source
+      target: '1747532930377'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 17481526039570-source-17481526177860-target
+      selected: false
+      source: '17481526039570'
+      sourceHandle: source
+      target: '17481526177860'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 17481526039570-source-1748154544581-target
+      selected: false
+      source: '17481526039570'
+      sourceHandle: source
+      target: '1748154544581'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: assigner
+      id: 1748152669344-true-17481546076930-target
+      selected: false
+      source: '1748152669344'
+      sourceHandle: 'true'
+      target: '17481546076930'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: assigner
+      id: 1748152669344-false-1748153137091-target
+      selected: false
+      source: '1748152669344'
+      sourceHandle: 'false'
+      target: '1748153137091'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 17481526177860-source-1748875365710-target
+      selected: false
+      source: '17481526177860'
+      sourceHandle: source
+      target: '1748875365710'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1748875365710-source-1748152669344-target
+      selected: false
+      source: '1748875365710'
+      sourceHandle: source
+      target: '1748152669344'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1747497224267-1747527648842-1748876762979-target
+      selected: false
+      source: '1747497224267'
+      sourceHandle: '1747527648842'
+      target: '1748876762979'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1748876384302-source-1748878644670-target
+      source: '1748876384302'
+      sourceHandle: source
+      target: '1748878644670'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: code
+      id: 17481546076930-source-1748879756019-target
+      source: '17481546076930'
+      sourceHandle: source
+      target: '1748879756019'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1748879756019-source-1748880194097-target
+      source: '1748879756019'
+      sourceHandle: source
+      target: '1748880194097'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: tool
+      id: 1748880194097-source-1747528216044-target
+      source: '1748880194097'
+      sourceHandle: source
+      target: '1747528216044'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: variable-aggregator
+      id: 1747532930377-source-1748877901200-target
+      source: '1747532930377'
+      sourceHandle: source
+      target: '1748877901200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1747497556365-source-1748877901200-target
+      source: '1747497556365'
+      sourceHandle: source
+      target: '1748877901200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1747528331045-source-1748877901200-target
+      source: '1747528331045'
+      sourceHandle: source
+      target: '1748877901200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1748876762979-source-1748877901200-target
+      source: '1748876762979'
+      sourceHandle: source
+      target: '1748877901200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: answer
+      id: 1748877901200-source-1748880840805-target
+      source: '1748877901200'
+      sourceHandle: source
+      target: '1748880840805'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: code
+      id: 1748880840805-source-1748876384302-target
+      source: '1748880840805'
+      sourceHandle: source
+      target: '1748876384302'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: question-classifier
+      id: 1747528216044-source-1747497224267-target
+      source: '1747528216044'
+      sourceHandle: source
+      target: '1747497224267'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: if-else
+      id: 1748918401849-source-17489187083700-target
+      source: '1748918401849'
+      sourceHandle: source
+      target: '17489187083700'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: agent
+      id: 17489187083700-true-1748438676437-target
+      source: '17489187083700'
+      sourceHandle: 'true'
+      target: '1748438676437'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1748438676437-source-1748507212807-target
+      source: '1748438676437'
+      sourceHandle: source
+      target: '1748507212807'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 17489187083700-false-17481526039570-target
+      source: '17489187083700'
+      sourceHandle: 'false'
+      target: '17481526039570'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1747384102423-source-1748919425306-target
+      source: '1747384102423'
+      sourceHandle: source
+      target: '1748919425306'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1748919425306-source-1748921064911-target
+      source: '1748919425306'
+      sourceHandle: source
+      target: '1748921064911'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1748921064911-source-1748918401849-target
+      source: '1748921064911'
+      sourceHandle: source
+      target: '1748918401849'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: code
+      id: 1748878644670-source-1748925737523-target
+      selected: false
+      source: '1748878644670'
+      sourceHandle: source
+      target: '1748925737523'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1748925737523-source-1748927014899-target
+      selected: false
+      source: '1748925737523'
+      sourceHandle: source
+      target: '1748927014899'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1748927014899-true-1748925987523-target
+      selected: false
+      source: '1748927014899'
+      sourceHandle: 'true'
+      target: '1748925987523'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: assigner
+        targetType: assigner
+      id: 1748878644670-source-1748878940036-target
+      source: '1748878644670'
+      sourceHandle: source
+      target: '1748878940036'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1748925987523-source-1748929690498-target
+      selected: false
+      source: '1748925987523'
+      sourceHandle: source
+      target: '1748929690498'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1748929690498-source-1748935738240-target
+      source: '1748929690498'
+      sourceHandle: source
+      target: '1748935738240'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 消息接收
+        type: start
+        variables: []
+      height: 53
+      id: '1747384102423'
+      position:
+        x: 30
+        y: 262.5
+      positionAbsolute:
+        x: 30
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 涉及工作，重要但不紧急
+        - id: '2'
+          name: 涉及工作，重要且紧急
+        - id: '1747497363644'
+          name: 涉及工作，紧急但不重要
+        - id: '1747527648842'
+          name: 日常交流或不重要且不紧急的事情
+        desc: 确认重要性和紧急性
+        instruction: '你是一个消息分类助手，你需要结合消息内容和现在的时间判断下面的消息的重要性和紧急性等级。
+
+          现在是{{#1747528216044.text#}}'
+        instructions: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen-plus-2025-04-28
+          provider: langgenius/tongyi/tongyi
+        query_variable_selector:
+        - conversation
+        - unreplystr
+        selected: false
+        title: 四象限分类
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 275
+      id: '1747497224267'
+      position:
+        x: 3982
+        y: 389.5
+      positionAbsolute:
+        x: 3982
+        y: 389.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-plus-0125
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: f3fd7844-ef9a-4031-a942-58287033b4db
+          role: system
+          text: '你是一名生活助理，正在协助你的主人处理来信。以下是一位联系人发来的请求，该请求被系统判定为“紧急且必要”。你的任务是以礼貌、专业但坚定的语气回复对方，明确说明：
+
+            你是生活助理，当前无法直接处理该事项；
+
+            对方提出的事情很重要，你会立即转达给主人；
+
+            请对方稍作等待，不应对你提出处理要求。
+
+            请生成一条消息，语气应温和但有边界，传达重视和尊重的态度，同时设定清晰的角色职责和时间预期。'
+        - id: 7aebaf95-626c-4d0a-baea-ebc70f78f0c6
+          role: user
+          text: 哥你能不能帮我看看我这个文件有没有什么问题，我一会要交给老师审核了。
+        - id: 009a6a6f-b289-4b42-9e53-0a9a44745461
+          role: assistant
+          text: '您好，感谢您的来信！我现在在忙其它的事情，现在是我的生活助理在回复您。
+
+            您所提的事项我的生活助理已注意到，确实非常重要。
+
+            他会立即将您的信息转达，并尽快提醒我查看，请您稍作等待。感谢理解！'
+        - id: bb70f48c-bfee-4086-8c1b-8a489968ea8b
+          role: user
+          text: '联系人本轮输入：{{#conversation.unreplystr#}}
+
+            历史记录：{{#1748919425306.result#}}'
+        selected: false
+        title: 重要且紧急
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747497553101'
+      position:
+        x: 4286
+        y: 389.5
+      positionAbsolute:
+        x: 4286
+        y: 389.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-plus-0125
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: d4ab6d49-ca82-4c47-84d3-8e4e49516e06
+          role: system
+          text: '你是一个生活助理，正在帮你的主人处理来信。以下是一个人发来的请求，该请求被系统判定为“紧急但不必要”，你的任务是用礼貌、专业但坚定的语气回复对方，确认以下两点：
+
+            这件事是否真的紧急？
+
+            是否必须由你的主人本人来完成？
+
+            请写一条消息，语气要体贴但有边界，确保不给对方错误期待，同时表达出你会尽快传达并安排处理。'
+        - id: be3352b7-45f3-4d41-ad7d-7b7cf82c9c82
+          role: user
+          text: 您好，现在有空帮我定一下今天晚上和客户吃饭的餐厅吗，不然订不到位。
+        - id: 8aea8154-0554-434f-889e-d4674218124e
+          role: assistant
+          text: '您好，感谢您的来信！我现在在忙其它的事情，现在是我的生活助理在回复您。
+
+            为确保高效安排，请您帮我确认以下几点：
+
+            这件事是否有硬性时限吗，是现在就要完成吗？
+
+            或者您要是很急的话先找其他人？
+
+            如果很急而且确实需要我去做的话请直接告诉我的生活助理，他会马上通知我'
+        - id: 716f58f7-5c18-44bf-98e0-f119bd61d50f
+          role: user
+          text: '联系人本轮输入：{{#conversation.unreplystr#}}
+
+            历史记录：{{#1748919425306.result#}}'
+        selected: false
+        title: 紧急但不必要
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747497556365'
+      position:
+        x: 4590
+        y: 626.5
+      positionAbsolute:
+        x: 4590
+        y: 626.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: 获取当前时间
+        tool_configurations:
+          format: '%Y-%m-%d %H:%M:%S'
+          timezone: Asia/Shanghai
+        tool_description: 一个用于获取当前时间的工具。
+        tool_label: 获取当前时间
+        tool_name: current_time
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '1747528216044'
+      position:
+        x: 3678
+        y: 389.5
+      positionAbsolute:
+        x: 3678
+        y: 389.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-plus-0125
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - edition_type: basic
+          id: 40dbce42-506f-471b-a680-96659aa8cbc0
+          role: system
+          text: '你是一个智能消息小助理，负责代替主人在不方便回复时，先和联系人打个招呼，回应他们的消息。
+
+            请根据联系人发来的消息，生成一句自然、轻松、拟人化的短句进行回复，语气可以友好亲切，必要时可以说明“主人稍后会看”“我不太清楚哦”“谢谢提醒”等。
+
+            风格参考如下：
+
+            模拟“帮忙转达、暂时代答”的小助手口吻；
+
+            语气亲切简洁，可以适当带一点情绪词，如“好嘞”“我记下啦”“谢谢提醒”“不太清楚哦”等；
+
+            回复要体现“已收到并知情”，但不要直接答复问题本身；
+
+            若对方消息带有明确问题（如“写完了吗”“今晚有空吗”），可委婉回应自己不确定；
+
+            回复长度建议控制在1~2句话，避免过长。
+
+            请直接输出回复内容，无需解释说明。'
+        - id: 96dc0896-6315-4181-8b5a-3cdbcd31b065
+          role: user
+          text: 实验报告写完了吗
+        - id: e83cd08f-49b4-4aa6-8b00-39181a49ecf5
+          role: assistant
+          text: ' 我是一个消息回复小助理，不太清楚哦。不急的话主人会晚点回复你'
+        - id: 5e18fa95-61a7-4e89-a282-82014d54b1c8
+          role: user
+          text: 今晚有空吗？
+        - id: 101b4d8d-cf1e-47dc-9008-73585eaff80a
+          role: assistant
+          text: 我晚点帮你问下主人哈～
+        - id: c7a25454-636f-4f21-b8b2-3005812c1182
+          role: user
+          text: 明天别忘了交申请表
+        - id: 6317b420-02d7-4c09-80cd-291f033bbe20
+          role: assistant
+          text: 好嘞好嘞，谢谢提醒！我记下啦～
+        - id: 23f613d2-6ca7-4956-9c41-f36881320391
+          role: user
+          text: '联系人本轮输入：{{#conversation.unreplystr#}}
+
+            历史记录：{{#1748919425306.result#}}'
+        selected: true
+        title: 重要不紧急
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747528331045'
+      position:
+        x: 4590
+        y: 755.5
+      positionAbsolute:
+        x: 4590
+        y: 755.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 你是邮件助手。请根据消息内容确定收件人、主题和正文，并通过mcp_server发送邮件。根据下面内容给{{#env.USER_EMAIL#}}发一封邮件，通知他尽快完成这些事情
+          mcp_server:
+            type: constant
+            value: "{\n  \"server_name\": {\n    \"url\": \"{{#env.ZAPIER_MCP_URL#}}\"\
+              ,\n    \"headers\": {},\n    \"timeout\": 25,\n    \"sse_read_timeout\"\
+              : 300\n  }\n}"
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: qwen-plus-0125
+              model_type: llm
+              provider: langgenius/tongyi/tongyi
+              type: model-selector
+          query:
+            type: constant
+            value: '用户输入：{{#conversation.unreplystr#}}
+
+              llm的回复：{{#1747497553101.text#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 一个用于获取当前时间的工具。
+              parameters: {}
+              provider_name: time
+              schemas:
+              - auto_generate: null
+                default: '%Y-%m-%d %H:%M:%S'
+                form: form
+                human_description:
+                  en_US: Time format in strftime standard.
+                  ja_JP: Time format in strftime standard.
+                  pt_BR: Time format in strftime standard.
+                  zh_Hans: strftime 标准的时间格式。
+                label:
+                  en_US: Format
+                  ja_JP: Format
+                  pt_BR: Format
+                  zh_Hans: 格式
+                llm_description: null
+                max: null
+                min: null
+                name: format
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: UTC
+                form: form
+                human_description:
+                  en_US: Timezone
+                  ja_JP: Timezone
+                  pt_BR: Timezone
+                  zh_Hans: 时区
+                label:
+                  en_US: Timezone
+                  ja_JP: Timezone
+                  pt_BR: Timezone
+                  zh_Hans: 时区
+                llm_description: null
+                max: null
+                min: null
+                name: timezone
+                options:
+                - label:
+                    en_US: UTC
+                    ja_JP: UTC
+                    pt_BR: UTC
+                    zh_Hans: UTC
+                  value: UTC
+                - label:
+                    en_US: America/New_York
+                    ja_JP: America/New_York
+                    pt_BR: America/New_York
+                    zh_Hans: 美洲/纽约
+                  value: America/New_York
+                - label:
+                    en_US: America/Los_Angeles
+                    ja_JP: America/Los_Angeles
+                    pt_BR: America/Los_Angeles
+                    zh_Hans: 美洲/洛杉矶
+                  value: America/Los_Angeles
+                - label:
+                    en_US: America/Chicago
+                    ja_JP: America/Chicago
+                    pt_BR: America/Chicago
+                    zh_Hans: 美洲/芝加哥
+                  value: America/Chicago
+                - label:
+                    en_US: America/Sao_Paulo
+                    ja_JP: America/Sao_Paulo
+                    pt_BR: América/São Paulo
+                    zh_Hans: 美洲/圣保罗
+                  value: America/Sao_Paulo
+                - label:
+                    en_US: Asia/Shanghai
+                    ja_JP: Asia/Shanghai
+                    pt_BR: Asia/Shanghai
+                    zh_Hans: 亚洲/上海
+                  value: Asia/Shanghai
+                - label:
+                    en_US: Asia/Ho_Chi_Minh
+                    ja_JP: Asia/Ho_Chi_Minh
+                    pt_BR: Ásia/Ho Chi Minh
+                    zh_Hans: 亚洲/胡志明市
+                  value: Asia/Ho_Chi_Minh
+                - label:
+                    en_US: Asia/Tokyo
+                    ja_JP: Asia/Tokyo
+                    pt_BR: Asia/Tokyo
+                    zh_Hans: 亚洲/东京
+                  value: Asia/Tokyo
+                - label:
+                    en_US: Asia/Dubai
+                    ja_JP: Asia/Dubai
+                    pt_BR: Asia/Dubai
+                    zh_Hans: 亚洲/迪拜
+                  value: Asia/Dubai
+                - label:
+                    en_US: Asia/Kolkata
+                    ja_JP: Asia/Kolkata
+                    pt_BR: Asia/Kolkata
+                    zh_Hans: 亚洲/加尔各答
+                  value: Asia/Kolkata
+                - label:
+                    en_US: Asia/Seoul
+                    ja_JP: Asia/Seoul
+                    pt_BR: Asia/Seoul
+                    zh_Hans: 亚洲/首尔
+                  value: Asia/Seoul
+                - label:
+                    en_US: Asia/Singapore
+                    ja_JP: Asia/Singapore
+                    pt_BR: Asia/Singapore
+                    zh_Hans: 亚洲/新加坡
+                  value: Asia/Singapore
+                - label:
+                    en_US: Europe/London
+                    ja_JP: Europe/London
+                    pt_BR: Europe/London
+                    zh_Hans: 欧洲/伦敦
+                  value: Europe/London
+                - label:
+                    en_US: Europe/Berlin
+                    ja_JP: Europe/Berlin
+                    pt_BR: Europe/Berlin
+                    zh_Hans: 欧洲/柏林
+                  value: Europe/Berlin
+                - label:
+                    en_US: Europe/Moscow
+                    ja_JP: Europe/Moscow
+                    pt_BR: Europe/Moscow
+                    zh_Hans: 欧洲/莫斯科
+                  value: Europe/Moscow
+                - label:
+                    en_US: Australia/Sydney
+                    ja_JP: Australia/Sydney
+                    pt_BR: Australia/Sydney
+                    zh_Hans: 澳大利亚/悉尼
+                  value: Australia/Sydney
+                - label:
+                    en_US: Pacific/Auckland
+                    ja_JP: Pacific/Auckland
+                    pt_BR: Pacific/Auckland
+                    zh_Hans: 太平洋/奥克兰
+                  value: Pacific/Auckland
+                - label:
+                    en_US: Africa/Cairo
+                    ja_JP: Africa/Cairo
+                    pt_BR: Africa/Cairo
+                    zh_Hans: 非洲/开罗
+                  value: Africa/Cairo
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: select
+              settings:
+                format:
+                  value: '%Y-%m-%d %H:%M:%S'
+                timezone:
+                  value: Asia/Shanghai
+              tool_description: 一个用于获取当前时间的工具。
+              tool_label: 获取当前时间
+              tool_name: current_time
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: ''
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: 发邮件提醒
+        type: agent
+      height: 197
+      id: '1747532930377'
+      position:
+        x: 4590
+        y: 389.5
+      positionAbsolute:
+        x: 4590
+        y: 389.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1748151687910'
+        memory:
+          query_prompt_template: '用户输入：{{#sys.query#}}
+
+            历史消息：{{#1748921064911.text#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 10
+        model:
+          completion_params: {}
+          mode: chat
+          name: deepseek-v3
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: f39ac767-724b-47ed-9b8f-95a2814c9826
+          role: system
+          text: "角色\n你是一个对话状态判断系统。你的任务是根据用户的最新一句话和聊天历史，判断用户的当前表达是否已经说完了，即在当前的语境下，该表达在结构和意义上是否构成了一个相对完整的单元。\n\
+            判断标准\ncomplete: \"是\"\n用户的最新一句话，结合聊天历史来看，构成了一个在语法结构和表达意义上相对完整的陈述、问题或感叹。\n\
+            虽然内容本身可能简单或复杂，但从表达形式上看，用户似乎已经说完了当前这个“话头”或“句子”。\n例如：“今天天气真不错。”，“这个多少钱？”，“我觉得可以。”\n\
+            complete: \"否\"\n用户的最新一句话听起来像是未完成的，可能只是一个短语、句子的前半部分，或者有明显的停顿、暗示还有后续内容。\n\
+            表达过于简略，以至于不像一个独立的、完整的发言单元。\n存在明显的语言标记表明话未说完，例如使用了“然后呢？”、“所以说…”、“但是…”等引导词但未给出后续。\n\
+            例如：“嗯…”、“关于那个项目…”、“我只是想说…”\n判断策略\n重点关注用户当前这句话在语言结构上的完整性，以及它与上下文结合时是否形成了一个自然的结束点。\n\
+            不需要深入分析用户这句话背后的深层意图或该意图是否能被系统完全理解并执行，只需要判断“这句话本身说完了没有”。\n如果存在疑问，倾向于认为用户可能还没说完（判断为“否”），等待用户给出更多信息。\n\
+            输出格式为JSON格式，但是不需要输出```json部分。\n输出格式参考：\n{\n  \"complete\": \"是\" 或 \"\
+            否\",\n  \"reason\": \"解释你的判断理由，指出用户的当前表达在结构或语义上是否已经构成一个相对完整的段落或语句，或者是否存在明显的未完成、中断、省略或暗示后续内容等情况。\"\
+            \n}"
+        selected: false
+        structured_output_enabled: false
+        title: 意图完整性
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '17481526039570'
+      position:
+        x: 1550
+        y: 262.5
+      positionAbsolute:
+        x: 1550
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1748151687910'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON数据
+            zh_Hans: JSON数据
+          label:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON data
+            zh_Hans: JSON数据
+          llm_description: JSON data to be processed
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON fields to be parsed
+            ja_JP: JSON fields to be parsed
+            pt_BR: JSON fields to be parsed
+            zh_Hans: 需要解析的 JSON 字段
+          label:
+            en_US: JSON filter
+            ja_JP: JSON filter
+            pt_BR: JSON filter
+            zh_Hans: JSON解析对象
+          llm_description: JSON fields to be parsed
+          max: null
+          min: null
+          name: json_filter
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 1
+          form: form
+          human_description:
+            en_US: Ensure the JSON output is ASCII encoded
+            ja_JP: Ensure the JSON output is ASCII encoded
+            pt_BR: Ensure the JSON output is ASCII encoded
+            zh_Hans: 确保输出的 JSON 是 ASCII 编码
+          label:
+            en_US: Ensure ASCII
+            ja_JP: Ensure ASCII
+            pt_BR: Ensure ASCII
+            zh_Hans: 确保 ASCII
+          llm_description: ''
+          max: null
+          min: null
+          name: ensure_ascii
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        params:
+          content: ''
+          ensure_ascii: ''
+          json_filter: ''
+        provider_id: langgenius/json_process/json_process
+        provider_name: langgenius/json_process/json_process
+        provider_type: builtin
+        selected: false
+        title: JSON 解析
+        tool_configurations:
+          ensure_ascii: 1
+        tool_description: 一个解析JSON对象的工具
+        tool_label: JSON 解析
+        tool_name: parse
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#17481526039570.text#}}'
+          json_filter:
+            type: mixed
+            value: complete
+        type: tool
+      height: 89
+      id: '17481526177860'
+      position:
+        x: 1854
+        y: 262.5
+      positionAbsolute:
+        x: 1854
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 2b43996c-6b89-4252-8153-83545c29a923
+            value: 是
+            varType: string
+            variable_selector:
+            - '17481526177860'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 125
+      id: '1748152669344'
+      position:
+        x: 2462
+        y: 262.5
+      positionAbsolute:
+        x: 2462
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1748875365710'
+          - result
+          variable_selector:
+          - conversation
+          - unreply
+          write_mode: over-write
+        selected: false
+        title: 存入待回复消息
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1748153137091'
+      position:
+        x: 2766
+        y: 262.5
+      positionAbsolute:
+        x: 2766
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON数据
+            zh_Hans: JSON数据
+          label:
+            en_US: JSON data
+            ja_JP: JSON data
+            pt_BR: JSON data
+            zh_Hans: JSON数据
+          llm_description: JSON data to be processed
+          max: null
+          min: null
+          name: content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: JSON fields to be parsed
+            ja_JP: JSON fields to be parsed
+            pt_BR: JSON fields to be parsed
+            zh_Hans: 需要解析的 JSON 字段
+          label:
+            en_US: JSON filter
+            ja_JP: JSON filter
+            pt_BR: JSON filter
+            zh_Hans: JSON解析对象
+          llm_description: JSON fields to be parsed
+          max: null
+          min: null
+          name: json_filter
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 1
+          form: form
+          human_description:
+            en_US: Ensure the JSON output is ASCII encoded
+            ja_JP: Ensure the JSON output is ASCII encoded
+            pt_BR: Ensure the JSON output is ASCII encoded
+            zh_Hans: 确保输出的 JSON 是 ASCII 编码
+          label:
+            en_US: Ensure ASCII
+            ja_JP: Ensure ASCII
+            pt_BR: Ensure ASCII
+            zh_Hans: 确保 ASCII
+          llm_description: ''
+          max: null
+          min: null
+          name: ensure_ascii
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        params:
+          content: ''
+          ensure_ascii: ''
+          json_filter: ''
+        provider_id: langgenius/json_process/json_process
+        provider_name: langgenius/json_process/json_process
+        provider_type: builtin
+        selected: false
+        title: JSON 解析
+        tool_configurations:
+          ensure_ascii: 1
+        tool_description: 一个解析JSON对象的工具
+        tool_label: JSON 解析
+        tool_name: parse
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#17481526039570.text#}}'
+          json_filter:
+            type: mixed
+            value: reason
+        type: tool
+      height: 89
+      id: '1748154544581'
+      position:
+        x: 1854
+        y: 391.5
+      positionAbsolute:
+        x: 1854
+        y: 391.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: append
+          value:
+          - sys
+          - query
+          variable_selector:
+          - conversation
+          - unreply
+          write_mode: over-write
+        selected: false
+        title: 存入待回复消息 (1)
+        type: assigner
+        version: '2'
+      height: 87
+      id: '17481546076930'
+      position:
+        x: 2766
+        y: 389.5
+      positionAbsolute:
+        x: 2766
+        y: 389.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: 你将接收一段用户输入的文本，请从中提取上下文中的具体事项，并调用 mcp_server 撰写一封邮件，收件人为：{{#env.USER_EMAIL#}}，内容应明确提醒对方尽快处理这些事项。
+          mcp_server:
+            type: constant
+            value: "{\n  \"server_name\": {\n    \"url\": \"{{#env.ZAPIER_MCP_URL#}}\"\
+              ,\n    \"headers\": {},\n    \"timeout\": 25,\n    \"sse_read_timeout\"\
+              : 300\n  }\n}"
+          model:
+            type: constant
+            value:
+              completion_params: {}
+              mode: chat
+              model: qwen-turbo
+              model_type: llm
+              provider: langgenius/tongyi/tongyi
+              type: model-selector
+          query:
+            type: constant
+            value: '本轮输入：{{#sys.query#}}
+
+              上下文：{{#1748921064911.text#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 一个用于获取当前时间的工具。
+              parameters: {}
+              provider_name: time
+              schemas:
+              - auto_generate: null
+                default: '%Y-%m-%d %H:%M:%S'
+                form: form
+                human_description:
+                  en_US: Time format in strftime standard.
+                  ja_JP: Time format in strftime standard.
+                  pt_BR: Time format in strftime standard.
+                  zh_Hans: strftime 标准的时间格式。
+                label:
+                  en_US: Format
+                  ja_JP: Format
+                  pt_BR: Format
+                  zh_Hans: 格式
+                llm_description: null
+                max: null
+                min: null
+                name: format
+                options: []
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: UTC
+                form: form
+                human_description:
+                  en_US: Timezone
+                  ja_JP: Timezone
+                  pt_BR: Timezone
+                  zh_Hans: 时区
+                label:
+                  en_US: Timezone
+                  ja_JP: Timezone
+                  pt_BR: Timezone
+                  zh_Hans: 时区
+                llm_description: null
+                max: null
+                min: null
+                name: timezone
+                options:
+                - label:
+                    en_US: UTC
+                    ja_JP: UTC
+                    pt_BR: UTC
+                    zh_Hans: UTC
+                  value: UTC
+                - label:
+                    en_US: America/New_York
+                    ja_JP: America/New_York
+                    pt_BR: America/New_York
+                    zh_Hans: 美洲/纽约
+                  value: America/New_York
+                - label:
+                    en_US: America/Los_Angeles
+                    ja_JP: America/Los_Angeles
+                    pt_BR: America/Los_Angeles
+                    zh_Hans: 美洲/洛杉矶
+                  value: America/Los_Angeles
+                - label:
+                    en_US: America/Chicago
+                    ja_JP: America/Chicago
+                    pt_BR: America/Chicago
+                    zh_Hans: 美洲/芝加哥
+                  value: America/Chicago
+                - label:
+                    en_US: America/Sao_Paulo
+                    ja_JP: America/Sao_Paulo
+                    pt_BR: América/São Paulo
+                    zh_Hans: 美洲/圣保罗
+                  value: America/Sao_Paulo
+                - label:
+                    en_US: Asia/Shanghai
+                    ja_JP: Asia/Shanghai
+                    pt_BR: Asia/Shanghai
+                    zh_Hans: 亚洲/上海
+                  value: Asia/Shanghai
+                - label:
+                    en_US: Asia/Ho_Chi_Minh
+                    ja_JP: Asia/Ho_Chi_Minh
+                    pt_BR: Ásia/Ho Chi Minh
+                    zh_Hans: 亚洲/胡志明市
+                  value: Asia/Ho_Chi_Minh
+                - label:
+                    en_US: Asia/Tokyo
+                    ja_JP: Asia/Tokyo
+                    pt_BR: Asia/Tokyo
+                    zh_Hans: 亚洲/东京
+                  value: Asia/Tokyo
+                - label:
+                    en_US: Asia/Dubai
+                    ja_JP: Asia/Dubai
+                    pt_BR: Asia/Dubai
+                    zh_Hans: 亚洲/迪拜
+                  value: Asia/Dubai
+                - label:
+                    en_US: Asia/Kolkata
+                    ja_JP: Asia/Kolkata
+                    pt_BR: Asia/Kolkata
+                    zh_Hans: 亚洲/加尔各答
+                  value: Asia/Kolkata
+                - label:
+                    en_US: Asia/Seoul
+                    ja_JP: Asia/Seoul
+                    pt_BR: Asia/Seoul
+                    zh_Hans: 亚洲/首尔
+                  value: Asia/Seoul
+                - label:
+                    en_US: Asia/Singapore
+                    ja_JP: Asia/Singapore
+                    pt_BR: Asia/Singapore
+                    zh_Hans: 亚洲/新加坡
+                  value: Asia/Singapore
+                - label:
+                    en_US: Europe/London
+                    ja_JP: Europe/London
+                    pt_BR: Europe/London
+                    zh_Hans: 欧洲/伦敦
+                  value: Europe/London
+                - label:
+                    en_US: Europe/Berlin
+                    ja_JP: Europe/Berlin
+                    pt_BR: Europe/Berlin
+                    zh_Hans: 欧洲/柏林
+                  value: Europe/Berlin
+                - label:
+                    en_US: Europe/Moscow
+                    ja_JP: Europe/Moscow
+                    pt_BR: Europe/Moscow
+                    zh_Hans: 欧洲/莫斯科
+                  value: Europe/Moscow
+                - label:
+                    en_US: Australia/Sydney
+                    ja_JP: Australia/Sydney
+                    pt_BR: Australia/Sydney
+                    zh_Hans: 澳大利亚/悉尼
+                  value: Australia/Sydney
+                - label:
+                    en_US: Pacific/Auckland
+                    ja_JP: Pacific/Auckland
+                    pt_BR: Pacific/Auckland
+                    zh_Hans: 太平洋/奥克兰
+                  value: Pacific/Auckland
+                - label:
+                    en_US: Africa/Cairo
+                    ja_JP: Africa/Cairo
+                    pt_BR: Africa/Cairo
+                    zh_Hans: 非洲/开罗
+                  value: Africa/Cairo
+                placeholder: null
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: select
+              settings:
+                format:
+                  value: '%Y-%m-%d %H:%M:%S'
+                timezone:
+                  value: UTC
+              tool_description: 一个用于获取当前时间的工具。
+              tool_label: 获取当前时间
+              tool_name: current_time
+              type: builtin
+        agent_strategy_label: MCP FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: hjlarry/agent/mcp_agent
+        desc: ''
+        output_schema: null
+        plugin_unique_identifier: hjlarry/agent:0.0.1@f42a5a80b1c77fd0655c755b70ad08da47ceb1acc3638cf13a0eb9ed42b3a128
+        selected: false
+        title: 邮件发送0
+        type: agent
+      height: 197
+      id: '1748438676437'
+      position:
+        x: 1550
+        y: 474.5
+      positionAbsolute:
+        x: 1550
+        y: 474.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1748438676437.text#}}'
+        desc: ''
+        selected: false
+        title: 邮件发送成功
+        type: answer
+        variables: []
+      height: 105
+      id: '1748507212807'
+      position:
+        x: 1854
+        y: 520.5
+      positionAbsolute:
+        x: 1854
+        y: 520.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(msg: str) -> dict:\n    return {\n        \"result\": [msg]\n\
+          \    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: str to Array
+        type: code
+        variables:
+        - value_selector:
+          - sys
+          - query
+          variable: msg
+      height: 53
+      id: '1748875365710'
+      position:
+        x: 2158
+        y: 262.5
+      positionAbsolute:
+        x: 2158
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(contactsid:str, unreply: list[str], msg: str, time: str,classification:str)\
+          \ -> dict:\n    return {\n        \"result\":{\n                \"contacts\"\
+          : unreply,\n                \"llm\": msg,\n                \"time\": time,\n\
+          \                \"id\": contactsid,\n                \"level\":classification\
+          \ \n            }\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: object
+        selected: false
+        title: str to obj
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - unreply
+          variable: unreply
+        - value_selector:
+          - '1748877901200'
+          - output
+          variable: msg
+        - value_selector:
+          - '1747528216044'
+          - text
+          variable: time
+        - value_selector:
+          - sys
+          - user_id
+          variable: contactsid
+        - value_selector:
+          - '1747497224267'
+          - class_name
+          variable: classification
+      height: 53
+      id: '1748876384302'
+      position:
+        x: 5502
+        y: 572.5
+      positionAbsolute:
+        x: 5502
+        y: 572.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 可接入weclone
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-plus-0125
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 8e8bc2dd-65a4-42ec-bf15-3d16c479fe71
+          role: system
+          text: '你是一个生活小秘书，需要根据消息内容帮助人们回复日常生活中的闲聊。伪装成一名真正的人类，但是如果涉及到你并不清楚的事情，你需要承认：
+
+            我只是一个ai小助理，不清楚真实情况
+
+
+            现在的时间{{#1747528216044.text#}}'
+        - id: b8d76176-ed72-4710-b475-6fb3d51fb1ea
+          role: user
+          text: '联系人本轮输入：{{#conversation.unreplystr#}}
+
+            历史记录：{{#1748919425306.result#}}'
+        selected: false
+        title: 不重要不紧急
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1748876762979'
+      position:
+        x: 4590
+        y: 884.5
+      positionAbsolute:
+        x: 4590
+        y: 884.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        advanced_settings:
+          group_enabled: false
+          groups:
+          - groupId: e933c158-3f4f-455f-a9be-e1adf1c7b1e6
+            group_name: llmreply
+            output_type: string
+            variables:
+            - - '1748876762979'
+              - text
+            - - '1747528331045'
+              - text
+            - - '1747537932444'
+              - text
+            - - '1747497553101'
+              - text
+            - - '1747497556365'
+              - text
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1748876762979'
+          - text
+        - - '1747528331045'
+          - text
+        - - '1747537932444'
+          - text
+        - - '1747497553101'
+          - text
+        - - '1747497556365'
+          - text
+      height: 195
+      id: '1748877901200'
+      position:
+        x: 4894
+        y: 572.5
+      positionAbsolute:
+        x: 4894
+        y: 572.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: append
+          value:
+          - '1748876384302'
+          - result
+          variable_selector:
+          - conversation
+          - history
+          write_mode: over-write
+        selected: false
+        title: history
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1748878644670'
+      position:
+        x: 5806
+        y: 572.5
+      positionAbsolute:
+        x: 5806
+        y: 572.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: clear
+          value: ''
+          variable_selector:
+          - conversation
+          - unreply
+          write_mode: over-write
+        selected: false
+        title: 清空待回复列表
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1748878940036'
+      position:
+        x: 6110
+        y: 555.5
+      positionAbsolute:
+        x: 6110
+        y: 555.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arraymsg: list[str]) -> str:\n    return {\n        \"result\"\
+          : \"\\n\".join(arraymsg)\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: array to str
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - unreply
+          variable: arraymsg
+      height: 53
+      id: '1748879756019'
+      position:
+        x: 3070
+        y: 389.5
+      positionAbsolute:
+        x: 3070
+        y: 389.5
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1748879756019'
+          - result
+          variable_selector:
+          - conversation
+          - unreplystr
+          write_mode: over-write
+        selected: false
+        title: unreply-str
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1748880194097'
+      position:
+        x: 3374
+        y: 389.5
+      positionAbsolute:
+        x: 3374
+        y: 389.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1748877901200.output#}}'
+        desc: ''
+        selected: false
+        title: '消息回复 '
+        type: answer
+        variables: []
+      height: 105
+      id: '1748880840805'
+      position:
+        x: 5198
+        y: 572.5
+      positionAbsolute:
+        x: 5198
+        y: 572.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen2.5-32b-instruct
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 180d83f8-d4da-459c-9b58-f4e7579e3bf4
+          role: system
+          text: '你将接收一段用户输入的文本，请从中判断是否包含以下关键词指令或其他相似意思的指令：
+
+            “发送邮件”
+
+            “尽快通知”
+
+            处理逻辑如下：
+
+            如果文本中包含任一关键词或其他相似意思的指令，则仅输出文本：send_email。
+
+            如果文本中不包含以上关键词，则仅输出文本：not_command_word。'
+        - role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: whether send email
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1748918401849'
+      position:
+        x: 942
+        y: 262.5
+      positionAbsolute:
+        x: 942
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: f224ff4d-7046-42fd-b3e0-d16d87d6ff96
+            value: send_email
+            varType: string
+            variable_selector:
+            - '1748918401849'
+            - text
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 125
+      id: '17489187083700'
+      position:
+        x: 1246
+        y: 262.5
+      positionAbsolute:
+        x: 1246
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(contactsid: str, history: list[dict]) -> dict:\n\
+          \    # 先按 ID 过滤出符合的记录\n    filtered = [item for item in history if item.get(\"\
+          id\") == contactsid]\n    # 把每个 dict 序列化为 JSON 字符串\n    result = [json.dumps(item,\
+          \ ensure_ascii=False) for item in filtered]\n    return {\n        \"result\"\
+          : result\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: 'Extract history '
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - history
+          variable: history
+        - value_selector:
+          - sys
+          - user_id
+          variable: contactsid
+      height: 53
+      id: '1748919425306'
+      position:
+        x: 334
+        y: 262.5
+      positionAbsolute:
+        x: 334
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen-plus-0125
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: e9beb124-3a1d-4ae8-80ef-c9aa7f93f064
+          role: system
+          text: '你是一个对话上下文分析助手，任务是从用户的历史消息中，提取并整理与当前输入直接相关的上下文信息，以支持当前轮次任务处理。
+
+            请根据以下要求输出结果：
+
+            使用完整通顺的话总结与当前输入直接相关的历史信息；
+
+            内容应清晰、简洁、有条理，可直接为后续任务提供上下文支持；
+
+            如历史消息与当前输入无关，则只输出：no_relationship'
+        - id: d538c5c0-7e86-47ca-87e3-2cf2062073b8
+          role: user
+          text: '用户输入：{{#sys.query#}}
+
+            历史消息：{{#1748919425306.result#}}'
+        selected: false
+        title: 'Summarize history '
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1748921064911'
+      position:
+        x: 638
+        y: 262.5
+      positionAbsolute:
+        x: 638
+        y: 262.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(history: list[dict]) -> dict:\n    history_str = [\n     \
+          \   f\"[{item['time']}] 用户ID：{item['id']} 用户：{item['contacts'][0]} 助手：{item['llm']}\"\
+          \n        for item in history\n    ]\n    return {\n        \"history_len\"\
+          : len(history),\n        \"history_str\": history_str\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          history_len:
+            children: null
+            type: number
+          history_str:
+            children: null
+            type: array[string]
+        selected: false
+        title: len of history
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - history
+          variable: history
+      height: 53
+      id: '1748925737523'
+      position:
+        x: 6110
+        y: 682.5
+      positionAbsolute:
+        x: 6110
+        y: 682.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: deepseek-v3
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 8ff87e8c-239c-4d90-ac4f-85914b3d0148
+          role: system
+          text: "你是一个对话历史摘要助手，任务是从输入的对话记录中，按用户ID分类，对每位用户的历史消息进行结构化总结。\n输入格式（JSON 数组，每项是一条历史消息）：\n\
+            [\n  \"[时间戳] 用户ID：<用户ID> 用户：<用户消息> 助手：<助手回复>\",\n  ...\n]\n\n输出格式为 array[object]，每个对象代表一个用户的对话总结，结构如下：\n\
+            [\n{\n  \"contacts\": \"<总结该用户所有发言的核心内容>\",\n  \"llm\": \"<总结该用户收到的所有助手回复的核心内容>\"\
+            ,\n  \"time\": \"<从最早时间到最晚时间的时间范围，例如：2025-06-03 10:06:58 ~ 2025-06-03\
+            \ 10:08:35>\",\n  \"id\": \"<用户ID>\",\n  \"level\": null\n}\n]\n输出要求：\n\
+            按用户ID归类，每个ID生成一个对象；\ncontacts 字段：总结该用户所有发言的核心意图、需求或行为；\nllm 字段：总结助手对该用户的所有回复的主要信息或语气风格；\n\
+            time 字段：标明该用户所有消息的时间范围（起始时间 ~ 结束时间）；\nlevel 字段：保持为 null，不做推理；\n输出格式为严格结构化的\
+            \ JSON 数组，不包含代码标记符，禁止在输出中出现```json。"
+        - id: d9e98a7c-d052-4af7-be4b-e2de7ad136e1
+          role: user
+          text: '{{#1748925737523.history_str#}}'
+        selected: false
+        title: Archive History
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1748925987523'
+      position:
+        x: 6718
+        y: 682.5
+      positionAbsolute:
+        x: 6718
+        y: 682.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: ≥
+            id: de10961c-51ab-455c-87b8-10a5ffd2e717
+            numberVarType: variable
+            value: '{{#env.MAX_HISTORY_LEN#}}'
+            varType: number
+            variable_selector:
+            - '1748925737523'
+            - history_len
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: whether Archive History
+        type: if-else
+      height: 125
+      id: '1748927014899'
+      position:
+        x: 6414
+        y: 682.5
+      positionAbsolute:
+        x: 6414
+        y: 682.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(arg1: str) -> dict:\n    history_list = json.loads(arg1)\n\
+          \    return {\n        \"result\": history_list\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[object]
+        selected: false
+        title: str to array[object]
+        type: code
+        variables:
+        - value_selector:
+          - '1748925987523'
+          - text
+          variable: arg1
+      height: 53
+      id: '1748929690498'
+      position:
+        x: 7022
+        y: 682.5
+      positionAbsolute:
+        x: 7022
+        y: 682.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1748929690498'
+          - result
+          variable_selector:
+          - conversation
+          - history
+          write_mode: over-write
+        selected: false
+        title: ' 覆盖历史记录'
+        type: assigner
+        version: '2'
+      height: 87
+      id: '1748935738240'
+      position:
+        x: 7326
+        y: 682.5
+      positionAbsolute:
+        x: 7326
+        y: 682.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -3012.5793324402553
+      y: -256.12479692891975
+      zoom: 0.7578582650380243
