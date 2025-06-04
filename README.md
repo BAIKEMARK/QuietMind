@@ -1,6 +1,9 @@
-<img src="img\logo.png" title="logo" style="zoom:20%;" alt="alt"/>
+<p align="center">
+  <img src="img/logo.png" alt="QuietMind Logo" width="450"/>
+</p>
 
-## QuiteMind：你的智能消息托管助手
+
+## QuiteMind：你的AI智能消息托管助手
 
 还在被社交媒体的信息轰炸打乱节奏吗？在专注工作或放松休息时，面对一堆非必要、不紧急的消息，不仅耗时费神，还严重影响效率。
 
